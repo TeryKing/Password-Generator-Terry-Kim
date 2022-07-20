@@ -25,7 +25,7 @@ function writePassword()
 
   passwordText.value = create;
 }
-//blank still pushes to the next one
+//blank still pushes to the next one need to fix still
 function generatePasswordlength(statement)
 {
   let character = window.prompt(statement);
@@ -118,7 +118,7 @@ function generateString(finalpassword,length) {
   return result;
 }
 
-//need clear when repressing generate
+//need clear when repressing generate .
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
