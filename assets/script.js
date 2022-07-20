@@ -11,13 +11,13 @@ function writePassword()
   var statement = "How long do you want your password to be? (Min: 8 Max: 128)";
   var passwordLength = generatePasswordlength(statement);
   var secondstatement = "Do you want capital letters?(Yes/No)";
-  var passwordcapital = generateCapitals(secondstatement);
+  generateCapitals(secondstatement);
   var thirdstatement = "Do you want lower-case letters?(Yes/No)";
-  var passwordlower = generateLower(thirdstatement);
+  generateLower(thirdstatement);
   var fourthstatement = "Do you want special characters?(Yes/No)";
-  var passwordspecial = generateSpecial(fourthstatement);
+  generateSpecial(fourthstatement);
   var fifthstatement = "Do you want numbers?(Yes/No)";
-  var passwordnumbers = generateNumbers(fifthstatement);
+  generateNumbers(fifthstatement);
   var create = generateString(characters,passwordLength);
 
 
@@ -25,17 +25,19 @@ function writePassword()
 
   passwordText.value = create;
 }
-//blank still pushes to the next one need to fix still
+
 function generatePasswordlength(statement)
 {
   let character = window.prompt(statement);
   let characterlength = parseInt(character);
-  if(characterlength < 8 || characterlength > 128)
+  if(characterlength >= 8 && characterlength <= 128)
   {
+    return characterlength;
+  }
+  else{
     generatePasswordlength("Invalid amount of characters. Please try again.");
   }
-  return characterlength;
-  
+ 
 }
 
 function generateCapitals(secondstatement)
@@ -52,7 +54,9 @@ else
   {
     characters += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   }
+  console.log(capital);
 }
+
 }
 
 function generateLower(thirdstatement)
@@ -69,6 +73,7 @@ function generateLower(thirdstatement)
   {
     characters += "abcdefghijklmnopqrstuvwxyz";
   }
+  console.log(lower);
 }
 }
 
@@ -86,6 +91,7 @@ function generateSpecial(fourthstatement)
   {
     characters += " !#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
   }
+  console.log(special);
 }
 
   
@@ -105,6 +111,7 @@ function generateNumbers(fifthstatement)
     {
       characters += "1234567890";
     }
+    console.log(numbers);
   }
 }
 
@@ -115,10 +122,9 @@ function generateString(finalpassword,length) {
   {
       result += finalpassword.charAt(Math.floor(Math.random() * charactersLength));
   }
+  console.log(characters);
+  characters = "";
   return result;
 }
-
-//need clear when repressing generate .
-
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
