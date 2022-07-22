@@ -1,15 +1,14 @@
-// Assignment code here
+
 let characters = "";
 let finalpassword = '';
 
-// Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
-// Write password to the #password input
 function writePassword() 
 {
   var statement = "How long do you want your password to be? (Min: 8 Max: 128)";
   var passwordLength = generatePasswordlength(statement);
+  console.log(passwordLength);
   var secondstatement = "Do you want capital letters?(Yes/No)";
   generateCapitals(secondstatement);
   var thirdstatement = "Do you want lower-case letters?(Yes/No)";
@@ -35,7 +34,8 @@ function generatePasswordlength(statement)
     return characterlength;
   }
   else{
-    generatePasswordlength("Invalid amount of characters. Please try again.");
+    const incorrect = generatePasswordlength("Invalid amount of characters. Please try again.");
+    return incorrect;
   }
  
 }
@@ -54,7 +54,6 @@ else
   {
     characters += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   }
-  console.log(capital);
 }
 
 }
@@ -73,7 +72,6 @@ function generateLower(thirdstatement)
   {
     characters += "abcdefghijklmnopqrstuvwxyz";
   }
-  console.log(lower);
 }
 }
 
@@ -91,7 +89,6 @@ function generateSpecial(fourthstatement)
   {
     characters += " !#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
   }
-  console.log(special);
 }
 
   
@@ -111,7 +108,6 @@ function generateNumbers(fifthstatement)
     {
       characters += "1234567890";
     }
-    console.log(numbers);
   }
 }
 
@@ -120,11 +116,9 @@ function generateString(finalpassword,length) {
   const charactersLength = characters.length;
   for ( let i = 0; i < length; i++ ) 
   {
-      result += finalpassword.charAt(Math.floor(Math.random() * charactersLength));
+    result += finalpassword.charAt(Math.floor(Math.random() * charactersLength));
   }
-  console.log(characters);
   characters = "";
   return result;
 }
-// Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
