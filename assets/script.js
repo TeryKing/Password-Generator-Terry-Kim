@@ -1,9 +1,10 @@
 
+//using finalpassword and characters to track the length and user inputs of how the password ends up
 let characters = "";
 let finalpassword = '';
 
 var generateBtn = document.querySelector("#generate");
-
+//function to generate script to get user input and putting a value of the final result
 function writePassword() 
 {
   var statement = "How long do you want your password to be? (Min: 8 Max: 128)";
@@ -24,7 +25,7 @@ function writePassword()
 
   passwordText.value = create;
 }
-
+//First windows prompt on asking length of password with min and max.
 function generatePasswordlength(statement)
 {
   let character = window.prompt(statement);
@@ -40,6 +41,7 @@ function generatePasswordlength(statement)
  
 }
 
+//second prompt to whether user wants capitals or not using if statement.
 function generateCapitals(secondstatement)
 {
   let capital = window.prompt(secondstatement);
@@ -58,6 +60,7 @@ else
 
 }
 
+//third prompt to whether user wants lowercase letters
 function generateLower(thirdstatement)
 {
   let lower = window.prompt(thirdstatement);
@@ -75,6 +78,7 @@ function generateLower(thirdstatement)
 }
 }
 
+//fourth script to ask if they want special characters
 function generateSpecial(fourthstatement)
 {
   let special = window.prompt(fourthstatement);
@@ -87,13 +91,14 @@ function generateSpecial(fourthstatement)
 {
   if(special === "Yes" || special === "yes")
   {
-    characters += " !#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+    characters += " !#$%&'()*+,-./:;<=>?@[]^_`{|}~";
   }
 }
 
   
 }
 
+//fifth prompt asking if user wants numbers
 function generateNumbers(fifthstatement)
 {
   let numbers = window.prompt(fifthstatement);
@@ -111,6 +116,7 @@ function generateNumbers(fifthstatement)
   }
 }
 
+//function to generate a string to get all of the user inputs from previous to randomize letters, numbers, and special characters and fit to length.
 function generateString(finalpassword,length) {
   let result = '';
   const charactersLength = characters.length;
@@ -121,4 +127,6 @@ function generateString(finalpassword,length) {
   characters = "";
   return result;
 }
+
+//generic button to start the function writePassword on click.
 generateBtn.addEventListener("click", writePassword);
